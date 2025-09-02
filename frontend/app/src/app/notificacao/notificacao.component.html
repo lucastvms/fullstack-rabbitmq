@@ -1,0 +1,20 @@
+<div class="wrap">
+    <h1>Notificações</h1>
+
+    <div class="form">
+        <input [(ngModel)]="texto" type="text" placeholder="Digite o conteudoMensagem..." (keyup.enter)="enviar()" />
+        <button (click)="enviar()">Enviar Notificação</button>
+        <button class="ghost" (click)="limpar()" title="Limpar lista">Limpar</button>
+    </div>
+
+    <ul class="list">
+        <li *ngFor="let i of itens">
+            <code>{{ i.id }}</code>
+            <span class="msg">{{ i.texto }}</span>
+            <span class="status" [class.ok]="i.status==='PROCESSADO_SUCESSO'"
+                [class.err]="i.status==='FALHA_PROCESSAMENTO'">
+                {{ i.status }}
+            </span>
+        </li>
+    </ul>
+</div>
